@@ -1,0 +1,15 @@
+name: luz_jovem_siloe
+description: Um aplicativo de musicas gospel
+publish_to: 'none'
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  on_audio_query: ^3.1.0
+  just_audio: ^0.9.37
+
+flutter:
+  uses-material-design: true
