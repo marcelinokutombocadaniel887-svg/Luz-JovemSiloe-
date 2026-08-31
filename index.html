@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0b0b0d">
+  <meta name="description" content="Luz JovemSiloé — músicas que edificam">
+  <link rel="manifest" href="manifest.webmanifest">
+  <title>Luz JovemSiloé</title>
+  <style>
+    :root{--bg:#09090b;--card:#151518;--card2:#1d1d21;--gold:#e7bd58;--text:#fff;--muted:#a8a8ae;--line:#2b2b30}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% -10%,#332817 0,#09090b 38%);color:var(--text);font-family:Arial,Helvetica,sans-serif}
+    button,input{font:inherit}button{border:0;color:inherit;background:none;cursor:pointer}
+    .app{max-width:760px;margin:auto;min-height:100vh;padding-bottom:145px}.top{padding:18px 18px 0;display:flex;justify-content:space-between;align-items:center}
+    .icon{font-size:26px}.hero{padding:18px 18px 10px;text-align:center}.logo{font-size:39px;font-weight:800;letter-spacing:-2px}.logo span{color:var(--gold)}.tag{font-size:10px;letter-spacing:4px;color:#ddd;margin-top:5px}
+    .search{margin:18px 18px 14px;background:#242428;border-radius:35px;padding:13px 18px;display:flex;gap:10px;align-items:center}.search input{flex:1;background:none;border:0;outline:0;color:white;font-size:16px}
+    .banner{margin:0 18px;background:linear-gradient(110deg,#17191f,#101827);border:1px solid #36373d;border-radius:22px;padding:22px;min-height:185px;position:relative;overflow:hidden}
+    .banner:after{content:"";position:absolute;right:-45px;bottom:-70px;width:230px;height:230px;border-radius:50%;background:radial-gradient(circle,#34557c55,transparent 65%)}
+    .pill{display:inline-block;background:var(--gold);color:#111;padding:7px 12px;border-radius:9px;font-size:12px;font-weight:700}.banner h1{font-size:27px;line-height:1.05;margin:15px 0 5px;max-width:55%}.banner p{color:var(--gold);margin:0 0 18px}
+    .playbtn{background:var(--gold);color:#111;padding:11px 18px;border-radius:22px;font-weight:700}
+    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:14px 18px}.quick{background:var(--card);border-radius:17px;padding:16px 7px;text-align:center}.quick b{display:block;color:var(--gold);font-size:24px;margin-bottom:8px}.quick small{font-size:12px}
+    .section{padding:8px 18px}.sectionhead{display:flex;justify-content:space-between;align-items:center}.sectionhead h2{font-size:20px}.sectionhead button{color:var(--gold)}
+    .track{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}.cover{width:58px;height:58px;border-radius:11px;display:grid;place-items:center;background:linear-gradient(145deg,#725b31,#17171a);font-size:22px;flex:none}.meta{flex:1;min-width:0}.meta strong{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta small{color:var(--muted)}.heart{font-size:20px;color:#777}.heart.on{color:var(--gold)}
+    .empty{color:var(--muted);text-align:center;padding:35px 10px}.player{position:fixed;left:50%;bottom:64px;transform:translateX(-50%);width:min(760px,100%);background:#121216ee;backdrop-filter:blur(12px);border-top:1px solid #333;padding:10px 16px;z-index:5}.p-row{display:flex;align-items:center;gap:12px}.p-cover{width:46px;height:46px;border-radius:9px;background:linear-gradient(145deg,#8a6c35,#151519);display:grid;place-items:center}.p-meta{flex:1}.p-meta strong,.p-meta small{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.p-meta small{color:var(--muted)}.controls{display:flex;align-items:center;gap:8px}.circle{width:45px;height:45px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;color:var(--gold);font-size:20px}.progress{width:100%;height:4px;margin-top:8px;accent-color:var(--gold)}
+    .nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(760px,100%);height:64px;background:#0b0b0dee;backdrop-filter:blur(10px);border-top:1px solid #29292d;display:flex;justify-content:space-around;z-index:6}.nav button{font-size:11px;color:#999}.nav button.active{color:var(--gold)}.nav b{display:block;font-size:21px;margin-bottom:3px}
+    .modal{position:fixed;inset:0;background:#000b;display:none;align-items:end;z-index:10}.sheet{background:#151518;width:100%;max-width:760px;margin:auto;border-radius:24px 24px 0 0;padding:22px}.sheet h2{margin-top:0}.file{border:1px dashed #555;border-radius:15px;padding:18px;text-align:center;color:#bbb}.sheet textarea{width:100%;height:130px;background:#0e0e10;border:1px solid #333;border-radius:12px;color:white;padding:12px;margin-top:12px}
+    @media(min-width:650px){.grid{grid-template-columns:repeat(7,1fr)}.quick{padding:15px 4px}}
+  </style>
+</head>
+<body>
+<div class="app">
+  <div class="top"><button class="icon" onclick="alert('Menu da Luz JovemSiloé')">☰</button><button class="icon" onclick="alert('Notificações em breve')">♧</button></div>
+  <div class="hero"><div class="logo">Luz <span>✝</span> JovemSiloé</div><div class="tag">MÚSICAS QUE EDIFICAM</div></div>
+  <div class="search">⌕ <input id="search" placeholder="Pesquisar músicas, artistas..." oninput="render()"></div>
+  <section class="banner"><span class="pill">DESTAQUE</span><h1>DEUS FAZ<br>ALGO NOVO</h1><p>Conteúdo gospel</p><button class="playbtn" onclick="playSong(0)">▶ Ouvir agora</button></section>
+  <div class="grid">
+    <button class="quick" onclick="showAll()"><b>♫</b><small>Músicas</small></button>
+    <button class="quick" onclick="showAll()"><b>✦</b><small>Lançamentos</small></button>
+    <button class="quick" onclick="showFav()"><b>♡</b><small>Favoritos</small></button>
+    <button class="quick" onclick="alert('Área de artistas em construção')"><b>♩</b><small>Artistas</small></button>
+    <button class="quick" onclick="alert('Selecione uma música para ver a letra')"><b>▤</b><small>Letras</small></button>
+    <button class="quick" onclick="alert('Vídeos serão adicionados na próxima versão')"><b>▷</b><small>Vídeos</small></button>
+    <button class="quick" onclick="alert('Rádio Gospel será adicionada depois')"><b>◉</b><small>Rádio</small></button>
+  </div>
+  <section class="section"><div class="sectionhead"><h2 id="title">Músicas em destaque</h2><button onclick="showAll()">Ver todas ›</button></div><div id="list"></div></section>
+</div>
+
+<div class="player" id="player">
+  <div class="p-row"><div class="p-cover">♫</div><div class="p-meta"><strong id="ptitle">Nenhuma música</strong><small id="partist">Escolha uma música</small></div><div class="controls"><button onclick="prev()">◀</button><button class="circle" id="pp" onclick="toggle()">▶</button><button onclick="next()">▶</button></div></div>
+  <input class="progress" id="progress" type="range" min="0" max="100" value="0" oninput="seek(this.value)">
+</div>
+<div class="nav"><button class="active" onclick="nav(this,'Início')"><b>⌂</b>Início</button><button onclick="nav(this,'Biblioteca')"><b>▣</b>Biblioteca</button><button onclick="openAdd()"><b>＋</b>Adicionar</button><button onclick="nav(this,'Playlists')"><b>≡</b>Playlists</button><button onclick="nav(this,'Perfil')"><b>♙</b>Perfil</button></div>
+
+<div class="modal" id="modal"><div class="sheet"><h2>Adicionar música</h2><div class="file"><input id="audioFile" type="file" accept="audio/*"></div><textarea id="lyrics" placeholder="Cole aqui a letra da música (opcional)"></textarea><button class="playbtn" style="margin-top:12px" onclick="addLocal()">Adicionar à biblioteca</button><button style="float:right;margin-top:20px" onclick="closeAdd()">Fechar</button></div></div>
+
+<audio id="audio"></audio>
+<script>
+const songs=[
+ {title:"Bondade de Deus",artist:"Demo — substitua pelos seus dados",lyrics:"A letra desta música pode ser adicionada pelo botão Adicionar."},
+ {title:"Minha Adoração",artist:"Luz JovemSiloé",lyrics:"Adicione a letra da sua música aqui."},
+ {title:"Novo Começo",artist:"Luz JovemSiloé",lyrics:"Adicione a letra da sua música aqui."}
+];
+let current=-1, favorites=new Set(JSON.parse(localStorage.getItem('fav')||'[]')), audio=document.getElementById('audio');
+function render(list=songs){let q=document.getElementById('search').value.toLowerCase();let arr=list.filter(s=>(s.title+s.artist).toLowerCase().includes(q));document.getElementById('list').innerHTML=arr.length?arr.map((s,i)=>`<div class="track"><div class="cover">♫</div><div class="meta" onclick="playSong(${songs.indexOf(s)})"><strong>${s.title}</strong><small>${s.artist}</small></div><button class="heart ${favorites.has(songs.indexOf(s))?'on':''}" onclick="fav(${songs.indexOf(s)})">♥</button><button onclick="alert(${JSON.stringify(s.lyrics)})">⋮</button></div>`).join(''):'<div class="empty">Nenhuma música encontrada.</div>'}
+function playSong(i){current=i;let s=songs[i];document.getElementById('ptitle').textContent=s.title;document.getElementById('partist').textContent=s.artist;if(s.url){audio.src=s.url;audio.play();document.getElementById('pp').textContent='Ⅱ'}else{document.getElementById('pp').textContent='▶';alert('Esta é uma música de demonstração. Use “Adicionar” para colocar um ficheiro de áudio do seu telefone.')} }
+function toggle(){if(!audio.src){if(current>=0)alert('Adicione o ficheiro de áudio desta música para reproduzi-la.');return}audio.paused?(audio.play(),pp.textContent='Ⅱ'):(audio.pause(),pp.textContent='▶')}
+function seek(v){if(audio.duration)audio.currentTime=audio.duration*v/100}
+function prev(){if(current>0)playSong(current-1)} function next(){if(current<songs.length-1)playSong(current+1)}
+audio.ontimeupdate=()=>{if(audio.duration)progress.value=audio.currentTime/audio.duration*100}
+function fav(i){favorites.has(i)?favorites.delete(i):favorites.add(i);localStorage.setItem('fav',JSON.stringify([...favorites]));render()}
+function showAll(){title.textContent='Todas as músicas';render(songs)}
+function showFav(){title.textContent='Favoritos';render(songs.filter((_,i)=>favorites.has(i)))}
+function nav(el,name){document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));el.classList.add('active');if(name==='Início'){title.textContent='Músicas em destaque';render()}else alert(name+' — próxima etapa do projeto')}
+function openAdd(){modal.style.display='flex'} function closeAdd(){modal.style.display='none'}
+function addLocal(){let f=document.getElementById('audioFile').files[0];if(!f){alert('Escolha um ficheiro de áudio.');return}let l=document.getElementById('lyrics').value;songs.unshift({title:f.name.replace(/\.[^.]+$/,''),artist:'Minha biblioteca',lyrics:l||'Sem letra adicionada.',url:URL.createObjectURL(f)});closeAdd();render();playSong(0)}
+render();
+</script>
+</body></html>
