@@ -1,0 +1,75 @@
+import 'package:flutter/material.dart';
+
+void main() => runApp(GospelPlayer());
+
+class GospelPlayer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData.dark().copyWith(
+        scaffoldBackgroundColor: Color(0xFF0D0D0D),
+        primaryColor: Color(0xFFFFD700),
+      ),
+      home: HomeScreen(),
+    );
+  }
+}
+
+class HomeScreen extends StatefulWidget {
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int _currentIndex = 0;
+
+  List<Map> musicas = [
+    {"titulo": "Bondade de Deus", "artista": "Isaias Saad"},
+    {"titulo": "Me Atraiu", "artista": "Gabriela Rocha"},
+    {"titulo": "MarcellSiloe---_ele_deixou_seu_trono_", "artista": "Minha música"},
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: ListView(
+        padding: EdgeInsets.all(16),
+        children: [
+          Text("Músicas em destaque", style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Color(0xFFFFD700))),
+          SizedBox(height: 20),
+         ...List.generate(musicas.length, (index) {
+            return Card(
+              color: Color(0xFF1A1A1A),
+              margin: EdgeInsets.only(bottom: 12),
+              child: ListTile(
+                leading: Container(
+                  width: 55, height: 55,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    gradient: LinearGradient(colors: [Color(0xFF3A2F0F), Color(0xFF1A1A1A)])
+                  ),
+                  child: Icon(Icons.music_note, color: Color(0xFFFFD700)),
+                ),
+                title: Text(musicas[index]["titulo"], style: TextStyle(color: Colors.white)),
+                subtitle: Text(musicas[index]["artista"], style: TextStyle(color: Colors.grey)),
+                trailing: Icon(Icons.favorite_border, color: Color(0xFFFFD700)),
+              ),
+            );
+          }),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Color(0xFF1A1A1A),
+        selectedItemColor: Color(0xFFFFD700),
+        unselectedItemColor: Colors.grey,
+        currentIndex: _currentIndex,
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Início"),
+          BottomNavigationBarItem(icon: Icon(Icons.music_note), label: "Músicas"),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Perfil"),
+        ],
+      ),
+    );
+  }
+}
